@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>RK4 Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <h1>RK4 Calculator</h1>
+        <hr>
+        <br>
+        <form id="form">
+            <label for="derivative">Choose the type of equation:</label>
+            <select name="derivative" id="derivative" required>
+                <option value="na">N/A</option>
+                <option value="first">1st order derivative (y')</option>
+                <option value="second">2nd order derivative (y'')</option>
+            </select>
+            <br>
+            <br>
+            <div class="opt_1" style="display: none;">
+                <label for="equation">Enter the equation: dy/dx =</label>
+                <input type="text" id="equation" name="equation">
+                <p>* The equation must be of the type dy/dx = f(x, y)</p>
+                <label for="x0">Enter value of x<sub>0</sub>:</label>
+                <input type="text" id="x0" name="x0">
+                <br>
+                <br>
+                <label for="y0">Enter value of y<sub>0</sub> (i.e. value of function y at x = x<sub>0</sub>):</label>
+                <input type="text" id="y0" name="y0">
+                <br>
+                <br>
+                <label for="xn">Enter value of x<sub>n</sub>:</label>
+                <input type="text" id="xn" name="xn">
+                <br>
+                <br>
+                <label for="step">Enter step value h:</label>
+                <input type="text" id="step" name="step">
+                <br>
+                <br>
+                <button type="submit">Solve Equation</button>
+            </div>
+            <div class="opt_2" style="display: none;">
+                <label for="equation_2">Enter the equation: d<sup>2</sup>y/dx<sup>2</sup> =</label>
+                <input type="text" id="equation_2" name="equation_2">
+                <p>* The equation must be of the type d<sup>2</sup>y/dx<sup>2</sup> = f(x, y, z) where z = dy/dx</p>
+                <label for="x0_2">Enter value of x<sub>0</sub>:</label>
+                <input type="text" id="x0_2" name="x0_2">
+                <br>
+                <br>
+                <label for="y0_2">Enter value of y<sub>0</sub> (i.e. value of function y at x = x<sub>0</sub>):</label>
+                <input type="text" id="y0_2" name="y0_2">
+                <br>
+                <br>
+                <label for="z0">Enter value of y'<sub>0</sub> (= z<sub>0</sub>): </label>
+                <input type="text" id="z0" name="z0">
+                <br>
+                <br>
+                <label for="xn_2">Enter value of x<sub>n</sub>:</label>
+                <input type="text" id="xn_2" name="xn_2">
+                <br>
+                <br>
+                <label for="step_2">Enter step value h:</label>
+                <input type="text" id="step_2" name="step_2">
+                <br>
+                <br>
+                <button type="submit">Solve Equation</button>
+            </div>
+                <br>
+                <hr>
+        </form>
+        <h3 id="tableTitle" style="text-align:center; display: none;">Table</h3>
+        <div id="results1" style="display: none;">
+            <table id="resultTable1" border="1">
+                <thead id="tableHead1">
+                    <tr>
+                        <th>Step (n)</th>
+                        <th>x<sub>n</sub></th>
+                        <th>k<sub>1</sub></th>
+                        <th>k<sub>2</sub></th>
+                        <th>k<sub>3</sub></th>
+                        <th>k<sub>4</sub></th>
+                        <th>y<sub>n</sub></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody1"></tbody>
+            </table>
+        </div>
+        <div id="results2" style="display: none;">
+            <table id="resultTable2" border="1">
+                <thead id="tableHead2">
+                    <tr>
+                        <th>Step (n)</th>
+                        <th>x<sub>n</sub></th>
+                        <th>k<sub>1</sub></th>
+                        <th>l<sub>1</sub></th>
+                        <th>k<sub>2</sub></th>
+                        <th>l<sub>2</sub></th>
+                        <th>k<sub>3</sub></th>
+                        <th>l<sub>3</sub></th>
+                        <th>k<sub>4</sub></th>
+                        <th>l<sub>4</sub></th>
+                        <th>y<sub>n</sub></th>
+                        <th>z<sub>n</sub></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody2"></tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <div id="conclusion"></div>
+        <div id="graph"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
